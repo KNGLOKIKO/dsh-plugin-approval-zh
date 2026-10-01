@@ -1,5 +1,15 @@
 # approval-zh — 权限确认窗口中文化
 
+[![Platform](https://img.shields.io/badge/platform-DeepSeek%20Harness-4B6BFB)](https://github.com/topics/deepseek-harness)
+[![Type](https://img.shields.io/badge/type-DSH%20Plugin-111827)](https://github.com/topics/dsh-plugin)
+[![Runtime](https://img.shields.io/badge/cordis-host%20%2B%20client-8B5CF6)](https://github.com/topics/cordis)
+[![Selftest](https://img.shields.io/badge/selftest-75%20passed-brightgreen)](#自检)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Node](https://img.shields.io/badge/node-%E2%89%A518-339933)](https://nodejs.org)
+
+> 界面文案、授权原因、命令说明全部中文；**不翻译审计记录**，也不改动审批语义。
+
+
 把 DSH 的**权限确认窗口（Approval）**整块换成中文界面，并且把窗口里那句一直
 是英文的**授权原因**也翻成中文。
 
@@ -172,9 +182,11 @@ plugin_manager  action=remove_bundle  target=@local/approval-zh
 
 ## 自检
 
-```
-E:\deepseek\resources\runtime\primary-runtime\dependencies\node\bin\node.exe `
-  C:\Users\KngLokiko\Documents\deepseek-harness\default-workspace\_diag\approval-zh-bundle\selftest.mjs
+```bash
+node selftest.mjs
 ```
 
 应输出 `BUNDLE SELFTEST PASSED (75 checks)`。
+
+自检**不联网、不启动 DSH、不读取任何凭证文件**，全程用假 `ctx` / 假 `React` /
+临时 fixture 库跑通注册与渲染，并静态断言仓库里没有明文 API key。
