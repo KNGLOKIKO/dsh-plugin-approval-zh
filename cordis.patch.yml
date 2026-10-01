@@ -1,0 +1,16 @@
+# Bundle patch for @local/approval-zh
+#
+# DSH 的 bundle 机制：Loader 读取本文件，把 `- insert:` 列表里的条目插入组合树。
+# 这里注册一个 Host 插件条目，指向本 bundle 的 ESM 入口 index.js。
+#
+# libraryPath（可选）指向 model-router 的 CommonJS 库（能力路由 + 双桶限流 +
+# 三级跨 provider 降级），仅用于「词表未收录的授权原因」的兜底翻译。
+#
+# 不填时按以下顺序自动解析：环境变量 APPROVAL_ZH_MODEL_ROUTER → 与本 bundle
+# 同级的 ../model-router/index.js。解析不到就只走客户端本地词表，插件照常工作。
+- insert:
+    - id: approval-zh
+      name: '@local/approval-zh'
+      config:
+        translateBudgetMs: 2500
+        useModelRouter: true
